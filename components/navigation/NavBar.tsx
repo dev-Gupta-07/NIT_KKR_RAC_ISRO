@@ -30,8 +30,7 @@ function Navbar() {
           { text: "Mandate", href: "/mandate" },
           { text: "Functioning", href: "/functioning" },
           { text: "Resources", href: "/resources" },
-          { text: "Past Event", href: "/past-event" },
-          { text: "Contact", href: "/contact" },
+          { text: "Collaborative Contacts", href: "/collaborativecontacts" },
         ].map((item) => (
           <ListItem key={item.text} disablePadding>
             <ListItemButton component={Link} href={item.href}>
@@ -88,8 +87,7 @@ function Navbar() {
               { text: "Mandate", href: "/mandate" },
               { text: "Functioning", href: "/functioning" },
               { text: "Resources", href: "/resources" },
-              { text: "Past Event", href: "/past-event" },
-              { text: "Contact", href: "/contact" },
+              { text: "Collaborative Contacts", href: "/collaborativecontacts" }
             ].map((item) => (
               <Link key={item.text} href={item.href} passHref>
                 <Button
