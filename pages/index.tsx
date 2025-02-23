@@ -1,11 +1,11 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
-import { Typography } from '@mui/material'
-
+import { Typography,Box } from '@mui/material'
+import { Home}  from '@/components'
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+export default function HomeStart() {
   return (
     <>
       <Head>
@@ -15,7 +15,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
      <main>
-      <Typography variant='h2'>hi</Typography>
+      <Box>
+      <Home/>
+
+      </Box>
+    
      </main>
     </>
   )
