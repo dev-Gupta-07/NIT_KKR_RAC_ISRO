@@ -24,7 +24,7 @@ function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
-        setScrolling(true); 
+        setScrolling(true);
       } else {
         setScrolling(false);
       }
@@ -36,7 +36,7 @@ function Navbar() {
 
   const drawerContent = (
 
-    
+
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center", padding: "20px" }}>
       <List>
         {[
@@ -55,7 +55,7 @@ function Navbar() {
                   "& .MuiTypography-root": {
                     fontSize: "10px",
                     color: "black",
-                    fontFamily:"serif"
+                    fontFamily: "serif"
                   },
                 }}
               />
@@ -97,32 +97,50 @@ function Navbar() {
           {/* <Typography variant="h6" sx={{ fontSize: "18px", color: "black",fontFamily:"serif" }}>
             ISRO RAC-S @NITKKR
           </Typography> */}
-           <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            <Box
-              component="img"
-              src="/logonit.png" 
-              alt="Logo"
-              sx={{
-                borderRadius:"200px",
-                height: "60px",
-                width: "60px",
-                // objectFit: "",
-              }}
-            /> 
-            <Box
-              component="img"
-              src="/isro.png" 
-              alt="Logo"
-              
-              sx={{
-                borderRadius:"150px",
-                height: "60px",
-                width: "60px",
-                // objectFit: "contain",
-              }}
-            />
+          <Box sx={{ display: "flex", alignItems: "center", gap: "10px" ,border:"1px solid transparent", 
+            boxShadow:"0px 2px 10px rgba(0, 0, 0, 0.15)",borderRadius:2,}}>
+            <Link href="https://nitkkr.ac.in/" passHref legacyBehavior>
+              <a target="_blank" rel="noopener noreferrer">
+                <Box
+                  component="img"
+                  src="/nit2.png"
+                  alt="Logo"
+                  sx={{
+                    borderRadius: "200px",
+                    height: "60px",
+                    width: "60px",
+                    // objectFit: "",
+                  }}
+                />
+              </a>
+            </Link>
+            <Box sx={{ display: { xs: "none", sm: "flex" } ,flexDirection:"column",  padding:"5px", }}>
+              <Typography variant="h6" sx={{ fontSize: "18px", color: "black", fontFamily:  "serif" }}>
+                Regional Academic Center for Space
+              </Typography>
+              <Typography variant="h6" sx={{ fontSize: "14px", color: "black", fontFamily:  "serif" }}>
+                NIT Kurukshetra | ISRO
+              </Typography>
+            </Box>
+            <Link href="https://www.isro.gov.in/" passHref legacyBehavior>
+              <a target="_blank" rel="noopener noreferrer">
+                <Box
+                  component="img"
+                  src="/isro2.svg"
+                  alt="Logo"
+
+                  sx={{
+                    borderRadius: "150px",
+                    height: "60px",
+                    width: "60px",
+                    // objectFit: "contain",
+                  }}
+                />
+              </a>
+            </Link>
+
+            
           </Box>
-          
 
           <Box sx={{ display: { xs: "none", sm: "flex" }, gap: "20px" }}>
             {[
@@ -138,7 +156,7 @@ function Navbar() {
                     fontSize: "15px",
                     // fontWeight: "bold",
                     color: "black",
-                    fontFamily:"serif",
+                    fontFamily: "serif",
                     "&:hover": { color: "#1976d2" },
                   }}
                 >
