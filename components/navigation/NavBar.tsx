@@ -13,15 +13,30 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import MenuIcon from "@mui/icons-material/Menu";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolling, setScrolling] = useState(false);
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolling(true); 
+      } else {
+        setScrolling(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const drawerContent = (
+
+    
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center", padding: "20px" }}>
       <List>
         {[
@@ -69,17 +84,45 @@ function Navbar() {
       />
 
       <AppBar
-        position="static"
+        position="fixed"
         sx={{
-          backgroundColor: "transparent",
-          boxShadow: "none",
-          paddingTop: "0px",
+          backgroundColor: scrolling ? "rgba(113, 177, 193, 0.24)" : "transparent",
+          boxShadow: scrolling ? "0px 2px 10px rgba(0, 0, 0, 0.1)" : "none",
+          backdropFilter: scrolling ? "blur(10px)" : "none",
+          transition: "background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
+          zIndex: 10,
         }}
       >
         <Toolbar sx={{ justifyContent: "space-between", minHeight: "10vh" }}>
-          <Typography variant="h6" sx={{ fontSize: "18px", color: "black",fontFamily:"serif" }}>
+          {/* <Typography variant="h6" sx={{ fontSize: "18px", color: "black",fontFamily:"serif" }}>
             ISRO RAC-S @NITKKR
-          </Typography>
+          </Typography> */}
+           <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
+            <Box
+              component="img"
+              src="/logonit.png" 
+              alt="Logo"
+              sx={{
+                borderRadius:"200px",
+                height: "60px",
+                width: "60px",
+                // objectFit: "",
+              }}
+            /> 
+            <Box
+              component="img"
+              src="/isro.png" 
+              alt="Logo"
+              
+              sx={{
+                borderRadius:"150px",
+                height: "60px",
+                width: "60px",
+                // objectFit: "contain",
+              }}
+            />
+          </Box>
+          
 
           <Box sx={{ display: { xs: "none", sm: "flex" }, gap: "20px" }}>
             {[
