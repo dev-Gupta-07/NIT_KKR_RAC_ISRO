@@ -39,9 +39,9 @@ function Navbar() {
                 primary={item.text}
                 sx={{
                   "& .MuiTypography-root": {
-                    fontSize: "20px",
-                    fontWeight: "bold",
+                    fontSize: "10px",
                     color: "black",
+                    fontFamily:"serif"
                   },
                 }}
               />
@@ -74,12 +74,12 @@ function Navbar() {
         sx={{
           backgroundColor: "transparent",
           boxShadow: "none",
-          paddingTop: "20px",
+          paddingTop: "0px",
         }}
       >
         <Toolbar sx={{ justifyContent: "space-between", minHeight: "10vh" }}>
-          <Typography variant="h6" sx={{ fontSize: "24px", fontWeight: "bold", color: "black" }}>
-            ISRO RAC-S @KKR
+          <Typography variant="h6" sx={{ fontSize: "18px", color: "black",fontFamily:"serif" }}>
+            ISRO RAC-S @NITKKR
           </Typography>
 
           <Box sx={{ display: { xs: "none", sm: "flex" }, gap: "20px" }}>
@@ -94,9 +94,10 @@ function Navbar() {
               <Link key={item.text} href={item.href} passHref>
                 <Button
                   sx={{
-                    fontSize: "18px",
-                    fontWeight: "bold",
+                    fontSize: "15px",
+                    // fontWeight: "bold",
                     color: "black",
+                    fontFamily:"serif",
                     "&:hover": { color: "#1976d2" },
                   }}
                 >
