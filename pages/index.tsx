@@ -15,7 +15,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
      <main>
-      {/* <Typography variant='h2'>hi</Typography> */}
+      <Typography variant='h2'>hi</Typography>
      </main>
     </>
   )
