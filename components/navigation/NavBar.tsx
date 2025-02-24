@@ -10,17 +10,37 @@ import {
   ListItemText,
   Toolbar,
   Typography,
+  Menu,MenuItem,Backdrop
 } from "@mui/material";
 import Link from "next/link";
 import MenuIcon from "@mui/icons-material/Menu";
 import React, { useState, useEffect } from "react";
+import { ArrowDropDown,ArrowDropUp } from "@mui/icons-material";
+import CloseIcon from "@mui/icons-material/Close";
 
 function Navbar() {
-  const [mobileOpen, setMobileOpen] = useState(false);
+ 
   const [scrolling, setScrolling] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [openDropdown, setOpenDropdown] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const handleDropdownToggle = () => {
+    setOpenDropdown((prev) =>!prev);
+  };
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+  const handleHover = (event:any) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+ 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -86,7 +106,7 @@ function Navbar() {
         boxShadow: "2px 0 5px rgba(0,0,0,0.1)",
       }}
     >
-      {/* Title Section */}
+  
       <Box
         sx={{
           display: { xs: "flex", sm: "none" },
@@ -120,43 +140,69 @@ function Navbar() {
           NIT Kurukshetra | ISRO
         </Typography>
       </Box>
-  
-      {/* Navigation List */}
+
       <List>
         {[
           { text: "About", href: "/about" },
           { text: "Mandate", href: "/mandate" },
           { text: "Functioning", href: "/functioning" },
-          { text: "Resources", href: "/resources" },
+          { text: "Resources", href: "/resources", isDropdown: true  },
           { text: "Collaborative Contacts", href: "/collaborativecontacts" },
         ].map((item) => (
-          <ListItem key={item.text} disablePadding>
+      
+          <React.Fragment key={item.text}>
+          <ListItem disablePadding>
             <ListItemButton
-              component={Link}
+              component="a"
               href={item.href}
               sx={{
                 textAlign: "left",
-                padding: "20px 20px",
+                padding: "20px",
                 borderRadius: "5px",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
                 "&:hover": {
                   backgroundColor: "#e0e0e0",
-                  transition: "background-color 0.3s ease-in-out",
                 },
               }}
             >
-              <ListItemText
-                primary={item.text}
-                sx={{
-                  "& .MuiTypography-root": {
-                    fontSize: "1.2rem",
-                    color: "#333",
-                    fontFamily: "serif",
-                    fontWeight: "500",
-                  },
-                }}
-              />
+              <ListItemText primary={item.text} />
+             
             </ListItemButton>
+            {item.isDropdown && (
+                <div onClick={(e) => {
+                  e.stopPropagation(); 
+                  handleDropdownToggle();
+                }}>
+                  {openDropdown ? <ArrowDropUp /> : <ArrowDropDown />}
+                </div>
+              )}
           </ListItem>
+
+          {item.isDropdown && openDropdown && (
+            <List disablePadding>
+              <ListItem disablePadding>
+                <ListItemButton
+                  component="a"
+                  href="/resources/callforproposal"
+                  sx={{ paddingLeft: "40px" }}
+                >
+                  <ListItemText primary="Call For Proposal" />
+                </ListItemButton>
+              </ListItem>
+              <ListItem disablePadding>
+                <ListItemButton
+                  component="a"
+                  href="/resources/downloads"
+                  sx={{ paddingLeft: "40px" }}
+                >
+                  <ListItemText primary="Downloads" />
+                </ListItemButton>
+              </ListItem>
+            </List>
+          )}
+        </React.Fragment>
         ))}
       </List>
     </Box>
@@ -206,7 +252,7 @@ function Navbar() {
                     borderRadius: "200px",
                     height: "60px",
                     width: "60px",
-                    // objectFit: "",
+                    
                   }}
                 />
               </a>
@@ -244,22 +290,94 @@ function Navbar() {
               { text: "About", href: "/about" },
               { text: "Mandate", href: "/mandate" },
               { text: "Functioning", href: "/functioning" },
-              { text: "Resources", href: "/resources" },
+              { text: "Resources", href: "/resources", isDropdown: true },
               { text: "Collaborative Contacts", href: "/collaborativecontacts" }
             ].map((item) => (
-              <Link key={item.text} href={item.href} passHref>
-                <Button
-                  sx={{
-                    fontSize: "15px",
-                    // fontWeight: "bold",
-                    color: "black",
-                    fontFamily: "serif",
-                    "&:hover": { color: "#1976d2" },
-                  }}
-                >
-                  {item.text}
-                </Button>
-              </Link>
+              item.isDropdown ? (
+                <div key={item.text} style={{ position: "relative", display: "flex", alignItems: "center" }}>
+                  <Link href={item.href} passHref>
+                    <Button
+                      sx={{
+                        fontSize: "15px",
+                        color: "black",
+                        fontFamily: "serif",
+                        textTransform: "none",
+                        "&:hover": { backgroundColor: "transparent", color: "#1976d2" },
+                      }}
+                    >
+                      {item.text}
+                    </Button>
+                  </Link>
+                  <Button
+                    onMouseEnter={handleHover}
+                    sx={{
+                      fontSize: "15px",
+                      color: "black",
+                      fontFamily: "serif",
+                      minWidth: "auto",
+                      padding: 0,
+                      textTransform: "none",
+                      "&:hover": { backgroundColor: "transparent" },
+                    }}
+                  >
+                    <ArrowDropDown />
+                  </Button>
+                  <Menu
+                    anchorEl={anchorEl}
+                    open={Boolean(anchorEl)}
+                    onClose={handleClose}
+                    MenuListProps={{ onMouseLeave: handleClose }}
+                    anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+                    transformOrigin={{ vertical: "top", horizontal: "right" }}
+                  >
+                    <MenuItem onClick={handleClose}>
+                    
+                      <Link href="/resources/callforproposal" passHref>
+                    <Button
+                      sx={{
+                        fontSize: "13px",
+                        color: "black",
+                        fontFamily: "serif",
+                        textTransform: "none",
+                        "&:hover": { backgroundColor: "transparent", color: "#1976d2" },
+                      }}
+                    >
+                      Call For Proposal
+                    </Button>
+                  </Link>
+                    </MenuItem>
+                    <MenuItem onClick={handleClose}>
+                    <Link href="/resources/downloads" passHref>
+                    <Button 
+                      sx={{
+                        fontSize: "13px",
+                        color: "black",
+                        fontFamily: "serif",
+                        textTransform: "none",
+                        "&:hover": { backgroundColor: "transparent", color: "#1976d2" },
+                      }}
+                    >
+                      Downloads
+                    </Button>
+                  </Link>
+                    </MenuItem>
+                  </Menu>
+                </div>
+              ) : (
+                <Link key={item.text} href={item.href} passHref>
+                  <Button
+                    sx={{
+                      fontSize: "15px",
+                      color: "black",
+                      fontFamily: "serif",
+                      textTransform: "none",
+                      "&:hover": { backgroundColor: "transparent", color: "#1976d2" },
+                    }}
+                  >
+                    {item.text}
+                  </Button>
+                </Link>
+              )
             ))}
           </Box>
 
@@ -273,7 +391,13 @@ function Navbar() {
           </IconButton>
         </Toolbar>
       </AppBar>
-
+      {mobileOpen && (
+        <Backdrop
+          open={mobileOpen}
+          onClick={handleDrawerToggle}
+          sx={{ zIndex: 1200 }}
+        />
+      )}
       <Drawer
         anchor="right"
         open={mobileOpen}
