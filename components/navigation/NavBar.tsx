@@ -161,6 +161,7 @@ function Navbar() {
                 borderRadius: "5px",
                 display: "flex",
                 justifyContent: "space-between",
+                fontFamily:"serif",
                 alignItems: "center",
                 "&:hover": {
                   backgroundColor: "#e0e0e0",
@@ -186,7 +187,7 @@ function Navbar() {
                 <ListItemButton
                   component="a"
                   href="/resources/callforproposal"
-                  sx={{ paddingLeft: "40px" }}
+                  sx={{ paddingLeft: "40px", fontFamily:"serif" }}
                 >
                   <ListItemText primary="Call For Proposal" />
                 </ListItemButton>
@@ -195,7 +196,7 @@ function Navbar() {
                 <ListItemButton
                   component="a"
                   href="/resources/downloads"
-                  sx={{ paddingLeft: "40px" }}
+                  sx={{ paddingLeft: "40px",fontFamily:"serif" }}
                 >
                   <ListItemText primary="Downloads" />
                 </ListItemButton>
@@ -298,7 +299,7 @@ function Navbar() {
                   <Link href={item.href} passHref>
                     <Button
                       sx={{
-                        fontSize: "15px",
+                        fontSize: "1.2rem",
                         color: "black",
                         fontFamily: "serif",
                         textTransform: "none",
@@ -311,7 +312,7 @@ function Navbar() {
                   <Button
                     onMouseEnter={handleHover}
                     sx={{
-                      fontSize: "15px",
+                      fontSize: "1.2rem",
                       color: "black",
                       fontFamily: "serif",
                       minWidth: "auto",
@@ -367,7 +368,7 @@ function Navbar() {
                 <Link key={item.text} href={item.href} passHref>
                   <Button
                     sx={{
-                      fontSize: "15px",
+                      fontSize: "1.2rem",
                       color: "black",
                       fontFamily: "serif",
                       textTransform: "none",
