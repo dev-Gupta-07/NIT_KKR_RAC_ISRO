@@ -34,13 +34,96 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // const drawerContent = (
+
+
+  //   <Box onClick={handleDrawerToggle} sx={{ textAlign: "center", padding: "20px" ,}}>
+  //     <Box sx={{ display: { xs: "flex", sm: "none" } ,flexDirection:"column",alignItems:"flex-start" , padding:"5px", }}>
+  //             <Typography variant="h6" sx={{ fontSize: "0.9rem", color: "black", fontFamily:  "serif" }}>
+  //               Regional Academic Center for Space
+  //             </Typography>
+  //             <Typography variant="h6" sx={{ fontSize: "0.7rem", color: "black", fontFamily:  "serif" }}>
+  //               NIT Kurukshetra | ISRO
+  //             </Typography>
+  //           </Box>
+  //     <List>
+  //       {[
+  //         { text: "Home", href: "/" },
+  //         { text: "About", href: "/about" },
+  //         { text: "Mandate", href: "/mandate" },
+  //         { text: "Functioning", href: "/functioning" },
+  //         { text: "Resources", href: "/resources" },
+  //         { text: "Collaborative Contacts", href: "/collaborativecontacts" },
+  //       ].map((item) => (
+  //         <ListItem key={item.text} disablePadding>
+  //           <ListItemButton component={Link} href={item.href}>
+  //             <ListItemText
+  //               primary={item.text}
+  //               sx={{
+  //                 "& .MuiTypography-root": {
+  //                   fontSize: "0.9rem",
+  //                   color: "black",
+  //                   fontFamily: "serif",
+  //                   padding:"5px",
+  //                 },
+  //               }}
+  //             />
+  //           </ListItemButton>
+  //         </ListItem>
+  //       ))}
+  //     </List>
+  //   </Box>
+  // );
+
   const drawerContent = (
-
-
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center", padding: "20px" }}>
+    <Box
+      onClick={handleDrawerToggle}
+      sx={{
+        textAlign: "center",
+        padding: "20px",
+        backgroundColor: "#f9f9f9",
+        minHeight: "100vh",
+        boxShadow: "2px 0 5px rgba(0,0,0,0.1)",
+      }}
+    >
+      {/* Title Section */}
+      <Box
+        sx={{
+          display: { xs: "flex", sm: "none" },
+          flexDirection: "column",
+          alignItems: "center",
+          padding: "10px",
+          borderBottom: "1px solid #ddd",
+        }}
+      >
+        <Typography
+          variant="h6"
+          sx={{
+            fontSize: "1rem",
+            fontWeight: "bold",
+            color: "#333",
+            fontFamily: "serif",
+            textTransform: "uppercase",
+          }}
+        >
+          Regional Academic Center for Space
+        </Typography>
+        <Typography
+          variant="h6"
+          sx={{
+            fontSize: "0.8rem",
+            color: "#555",
+            fontFamily: "serif",
+            fontStyle: "italic",
+          }}
+        >
+          NIT Kurukshetra | ISRO
+        </Typography>
+      </Box>
+  
+      {/* Navigation List */}
       <List>
         {[
-          { text: "Home", href: "/" },
           { text: "About", href: "/about" },
           { text: "Mandate", href: "/mandate" },
           { text: "Functioning", href: "/functioning" },
@@ -48,14 +131,27 @@ function Navbar() {
           { text: "Collaborative Contacts", href: "/collaborativecontacts" },
         ].map((item) => (
           <ListItem key={item.text} disablePadding>
-            <ListItemButton component={Link} href={item.href}>
+            <ListItemButton
+              component={Link}
+              href={item.href}
+              sx={{
+                textAlign: "left",
+                padding: "20px 20px",
+                borderRadius: "5px",
+                "&:hover": {
+                  backgroundColor: "#e0e0e0",
+                  transition: "background-color 0.3s ease-in-out",
+                },
+              }}
+            >
               <ListItemText
                 primary={item.text}
                 sx={{
                   "& .MuiTypography-root": {
-                    fontSize: "10px",
-                    color: "black",
-                    fontFamily: "serif"
+                    fontSize: "1.2rem",
+                    color: "#333",
+                    fontFamily: "serif",
+                    fontWeight: "500",
                   },
                 }}
               />
@@ -65,6 +161,7 @@ function Navbar() {
       </List>
     </Box>
   );
+  
 
   return (
     <Box sx={{ position: "relative", height: "60vh", overflow: "hidden" }}>
@@ -115,10 +212,10 @@ function Navbar() {
               </a>
             </Link>
             <Box sx={{ display: { xs: "none", sm: "flex" } ,flexDirection:"column",  padding:"5px", }}>
-              <Typography variant="h6" sx={{ fontSize: "18px", color: "black", fontFamily:  "serif" }}>
+              <Typography variant="h6" sx={{ fontSize: "1.1rem", color: "black", fontFamily:  "serif" }}>
                 Regional Academic Center for Space
               </Typography>
-              <Typography variant="h6" sx={{ fontSize: "14px", color: "black", fontFamily:  "serif" }}>
+              <Typography variant="h6" sx={{ fontSize: "0.9rem", color: "black", fontFamily:  "serif" }}>
                 NIT Kurukshetra | ISRO
               </Typography>
             </Box>
@@ -186,7 +283,7 @@ function Navbar() {
           "& .MuiDrawer-paper": {
             boxSizing: "border-box",
             width: "270px",
-            backgroundColor: "white",
+            backgroundColor: "rgb(192, 224, 233)",
           },
         }}
       >

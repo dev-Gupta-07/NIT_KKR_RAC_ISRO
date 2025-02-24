@@ -15,7 +15,7 @@ const institutions = [
 const contacts = [
   {
     title: 'Honorary Director',
-    name: 'Dr. Satish Kumar'
+    name: 'Dr. B.V. Ramana Reddy'
   },
   {
     title: 'Regional Coordinator',
@@ -27,7 +27,7 @@ const contacts = [
     title: 'Co-Coordinator',
     name: 'Prof. Sathans',
     department: 'Electrical Engineering Department, NIT Kurukshetra',
-    email: 'brahmjit@nitkkr.ac.in, racs@nitkkr.ac.in'
+    email: 'sathans@nitkkr.ac.in, racs@nitkkr.ac.in'
   }
 ];
 

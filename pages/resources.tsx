@@ -10,7 +10,7 @@ const Resources = ()=>{
             Call for Research Proposal        
             </Typography>
 
-            <Box sx={{width: "80%", margin:"auto", borderRadius:3,
+            <Box sx={{width: {md:"80%",xs:"90%"}, margin:"auto", borderRadius:3,
             border:"0px solid skyblue",padding:"50px", display:"flex", flexDirection:"column",
             flexWrap:"wrap",alignItems:"left",marginTop:"0px", }}>
                 

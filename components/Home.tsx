@@ -6,7 +6,7 @@ import DownloadIcon from "@mui/icons-material/Download";
 const Home = () => {
   return (
     <>
-      <Box sx={{width: "80%", margin:"auto", borderRadius:3,
+      <Box sx={{width: {md:"80%",xs:"90%"}, margin:"auto", borderRadius:3,
         border:"0px solid skyblue",padding:"50px", display:"flex", flexDirection:"column",
         flexWrap:"wrap",alignItems:"left",marginTop:"30px", }}>
         {/* <h1>Welcome to RAC-S</h1> */}
