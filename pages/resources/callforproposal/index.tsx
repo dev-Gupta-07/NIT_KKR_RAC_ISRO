@@ -19,7 +19,7 @@ const Resources = ()=>{
                     The Principal Investigator (PI) may upload the research Proposals in the prescribed formats.
                 </p>
 
-                <Button variant="contained" href="#contained-buttons" startIcon={<DownloadIcon/>} sx={{width:"fit-content",marginTop:"30px",
+                <Button variant="contained" href="../downloads/" startIcon={<DownloadIcon/>} sx={{width:"fit-content",marginTop:"30px",
           fontFamily:"serif", fontSize:"14px",padding:"10px", bgcolor:"rgb(96, 163, 179)" ,'&:hover':{bgcolor:"rgb(84, 134, 147)"}}}>
             Click here to download the formats </Button>
 

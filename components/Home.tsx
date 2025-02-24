@@ -4,6 +4,14 @@ import DownloadIcon from "@mui/icons-material/Download";
 
 
 const Home = () => {
+  const handleDownload = () => {
+    // Create a temporary anchor element
+    const link = document.createElement('a');
+    link.href = 'https://www.isro.gov.in/media_isro/pdf/programme/Research_Areas_in_Space_for_web2023.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+};
   return (
     <>
       <Box sx={{width: {md:"80%",xs:"90%"}, margin:"auto", borderRadius:3,
@@ -25,7 +33,7 @@ const Home = () => {
         awareness creation and R & D activities of ISRO.
         </p>
 
-        <Button variant="contained" href="#contained-buttons" endIcon={<DownloadIcon />} sx={{width:"fit-content",marginTop:"30px",
+        <Button variant="contained" onClick={handleDownload} endIcon={<DownloadIcon />} sx={{width:"fit-content",marginTop:"30px",
           fontFamily:"serif", fontSize:"14px",padding:"10px", bgcolor:"rgb(96, 163, 179)" ,'&:hover':{bgcolor:"rgb(84, 134, 147)"}}}>Research Areas in Space </Button>
       </Box>
     </>
