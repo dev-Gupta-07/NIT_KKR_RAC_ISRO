@@ -16,11 +16,12 @@ const StyledFooter = styled(Box)(({ theme }) => ({
 }));
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
   return (
     <StyledFooter component="footer">
       <Typography variant="body2" sx={{ fontWeight: 300, textAlign: "center" }}>
-        Copyright © 2024 National Institute of Technology Kurukshetra. All
-        Rights Reserved.
+        Copyright © {currentYear} National Institute of Technology Kurukshetra.
+        All Rights Reserved.
       </Typography>
     </StyledFooter>
   );
